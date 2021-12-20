@@ -1,7 +1,7 @@
 # STAGE 1 : CREE L"IMAGE DE L'APPLICATION NODEJS
 # Mon conteneur va etre cree a partir de quel image ?
 # From an nodejs image
-FROM node as build
+FROM node:15.4 as build
 # ICI JE PRECISE LE FICHIER QUI VA ETRE EXECUTE
 WORKDIR /app
 # ICI JE COPIE LE PACKAGE.JSON DANS LE CONTAINER DANS LE FICHIER /app
