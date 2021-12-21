@@ -17,16 +17,5 @@ RUN npm run build
 FROM nginx
 # COPY NGINX.CONF DANS LE CONTAINER
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-# COPY LE FICHIER DE BUILD DANS LE CONTAINER , DAFROM node:lts-alpine
-WORKDIR /usr/src/app
-COPY curriculum-front/package*.json ./
-RUN ls -l
-RUN npm install
-COPY curriculum-front ./
-RUN ls -l
-RUN npm run build
-COPY curriculum-front/nodeServer.js dist/nodeServer.js
-WORKDIR /usr/src/app/dist
-EXPOSE 8080
-CMD [ "node", "nodeServer.js" ]NS LE WORKING DIRECTORY
+# COPY LE FICHIER DE BUILD DANS LE CONTAINER , DANS LE WORKING DIRECTORY
 COPY --from=build /app/dist /usr/share/nginx/html 
