@@ -15,14 +15,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
-    - name: Build Vue
-      uses: xRealNeon/VuePagesAction@1.0.1
-      with:
-        username: 'ndemeyvan'
-        reponame: 'docker_vuejs'
-        token: ${{ secrets.GITHUB_TOKEN }}
-
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v1
