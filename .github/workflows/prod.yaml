@@ -13,6 +13,9 @@ jobs:
     name: Build and Deploy Vuejs Front-end
     runs-on: ubuntu-latest
     steps:
+      - name: Print the input tag to STDOUT
+        run: echo The tag is 
+    steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
