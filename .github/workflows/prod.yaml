@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Install nodejs
       uses: actions/setup-node@v2
       with:
@@ -28,10 +31,9 @@ jobs:
     - name: install vuecli
       run: npm install -g @vue/cli
 
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Print the vue version
+      run: vue --version
       
-
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
