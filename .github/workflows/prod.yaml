@@ -6,7 +6,7 @@ on:
       - master
   push:
     branches:
-      - master
+      - ci_cd_vuejs
 
 jobs:
   build-and-deploy-Vuejs-frontEnd:
