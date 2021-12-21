@@ -14,8 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
+    - run: |
+              npm ci
+              npm run build
+              npm run test:unit
+              npm run lint
       uses: actions/checkout@v2
-      run: npm i @vue/cli-service
 
 
 
