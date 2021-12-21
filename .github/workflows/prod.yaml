@@ -19,7 +19,6 @@ jobs:
       with:
         node-version: "14"
         cache: "npm"
-      run: npm install
 
     - name: Checkout code
       uses: actions/checkout@v2
