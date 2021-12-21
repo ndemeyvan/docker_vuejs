@@ -1,0 +1,21 @@
+version: '3'
+services:
+# SERVICE DE L"APPLI FRONT END
+  app:
+    container_name: vuejs_app
+    image: ndemeyvan/vuejs-frontend
+    ports:
+      - 80:80
+    networks:
+      - local_network
+# SERVICE DE WATCHTOWER, QUI PERMET DE REGARDER LES DERNIERES VERSION DES CONTAINERS
+    watchtower:
+      image: containrrr/watchtower
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - $HOME/.docker/config.json:/config.json
+      command: --interval=30
+
+networks:
+    local_network:
+      driver: bridge
