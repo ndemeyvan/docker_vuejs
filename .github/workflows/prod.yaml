@@ -18,7 +18,16 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: "14"
-        
+
+    - name: Print the node version
+      run: node -v
+    
+    - name: Print the npm version
+      run: npm -v
+
+    - name: install vuecli
+      run: npm install -g @vue/cli
+
     - name: Checkout code
       uses: actions/checkout@v2
       
