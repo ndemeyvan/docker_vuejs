@@ -13,9 +13,13 @@ jobs:
     name: Build and Deploy Vuejs Front-end
     runs-on: ubuntu-latest
     steps:
+    
+    - name: Print the input tag to STDOUT
+      run: echo The tag is ${{ github.event.inputs.tag }}
+
     - name: Checkout code
       uses: actions/checkout@v2
-      run: echo The tag is ${{ github.event.inputs.tag }}
+      
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
