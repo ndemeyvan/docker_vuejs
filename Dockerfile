@@ -1,12 +1,32 @@
-FROM node:lts-alpine
+# STAGE 1 : CREE L"IMAGE DE L'APPLICATION NODEJS
+# Mon conteneur va etre cree a partir de quel image ?
+# From an nodejs image
+FROM node:15.4 as build
+# ICI JE PRECISE LE FICHIER QUI VA ETRE EXECUTE
+WORKDIR /app
+# ICI JE COPIE LE PACKAGE.JSON DANS LE CONTAINER DANS LE FICHIER /app
+# L'ETOILE DIT COPY TOUT CE QUI EST DANS LE REPERTOIRE AVEC LE MOT CLE PACKAGE.<NOM DU PACKAGE>.JSON
+COPY package*.json ./app
+# LANCE LA COMMANDE npm INSTALL, NPM SERA DURECTEMENT INSTALLER DANS LE CONTAINER VU QUE C'EST UNE IMAGE NODEJS
+RUN npm install
+# COPIE TOUT LES FICHIER DE NODE_MODULES DANS LE CONTAINER DANS LE REPERTOIRE /app
+COPY . .
+# LANCE LA COMMANDE npm RUN BUILD , VA CREER LE FICHIER DE BUILD DE L'APPLICATION
+RUN npm run build
+# CREE UN AUTRE CONTAINER POUR L'APPLICATION A PARTIR DE L'IMAGE NGINX
+FROM nginx
+# COPY NGINX.CONF DANS LE CONTAINER
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+# COPY LE FICHIER DE BUILD DANS LE CONTAINER , DAFROM node:lts-alpine
 WORKDIR /usr/src/app
-COPY package*.json ./
+COPY curriculum-front/package*.json ./
 RUN ls -l
 RUN npm install
-COPY . ./
+COPY curriculum-front ./
 RUN ls -l
 RUN npm run build
-COPY nodeServer.js dist/nodeServer.js
+COPY curriculum-front/nodeServer.js dist/nodeServer.js
 WORKDIR /usr/src/app/dist
-EXPOSE 80
-CMD [ "node", "nodeServer.js" ]
+EXPOSE 8080
+CMD [ "node", "nodeServer.js" ]NS LE WORKING DIRECTORY
+COPY --from=build /app/dist /usr/share/nginx/html 
