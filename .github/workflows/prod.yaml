@@ -17,22 +17,22 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install nodejs
-      uses: actions/setup-node@v2
-      with:
-        node-version: "17.3.0"
+    # - name: Install nodejs
+    #   uses: actions/setup-node@v2
+    #   with:
+    #     node-version: "17.3.0"
 
-    - name: Print the node version
-      run: node -v
+    # - name: Print the node version
+    #   run: node -v
     
-    - name: Print the npm version
-      run: npm -v
+    # - name: Print the npm version
+    #   run: npm -v
 
-    - name: install vuecli
-      run: npm install -g @vue/cli
+    # - name: install vuecli
+    #   run: npm install -g @vue/cli
 
-    - name: Print the vue version
-      run: vue --version
+    # - name: Print the vue version
+    #   run: vue --version
       
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
