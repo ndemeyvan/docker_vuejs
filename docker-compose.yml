@@ -10,7 +10,7 @@ services:
       - local_network
 # SERVICE DE WATCHTOWER, QUI PERMET DE REGARDER LES DERNIERES VERSION DES CONTAINERS
     watchtower:
-      image: containrrr/watchtower
+      image: containrrr/watchtower:latest
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         - $HOME/.docker/config.json:/config.json
