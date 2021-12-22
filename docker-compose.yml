@@ -5,7 +5,7 @@ services:
     container_name: vuejs_app
     image: ndemeyvan/vuejs-frontend:v1.0.0
     ports:
-      - 80:80
+      - 8088:80
   watchtower:
     image: containrrr/watchtower
     volumes:
