@@ -24,4 +24,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ndemeyvan/vuejs-frontend
         dockerfile: Dockerfile
-        tags: latest
+        tags: v1.0.0
