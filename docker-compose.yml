@@ -3,7 +3,7 @@ services:
 # SERVICE DE L"APPLI FRONT END
   app:
     container_name: vuejs_app
-    image: ndemeyvan/vuejs-frontend
+    image: ndemeyvan/vuejs-frontend:v1.0.0
     ports:
       - 80:80
     networks:
