@@ -15,6 +15,8 @@ RUN npm install
 RUN ls 
 RUN pwd
 COPY . .
+RUN ls 
+RUN pwd
 # LANCE LA COMMANDE npm RUN BUILD , VA CREER LE FICHIER DE BUILD DE L'APPLICATION
 RUN npm run build
 
