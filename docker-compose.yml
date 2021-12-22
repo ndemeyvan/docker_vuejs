@@ -6,8 +6,6 @@ services:
     image: ndemeyvan/vuejs-frontend:v1.0.0
     ports:
       - 80:80
-    networks:
-      - local_network
   watchtower:
     image: containrrr/watchtower
     volumes:
